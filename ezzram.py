@@ -90,7 +90,7 @@ class Zram:
 	
 	@staticmethod	
 	def reset_device(i):
-		with open(f"/sys/block/zram{i}", "w") as sysfs:
+		with open(f"/sys/block/zram{i}/reset", "w") as sysfs:
 			sysfs.write("1")
 			sysfs.flush()
 			
