@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/usr/bin/ez-zram start
+ExecStop=/usr/bin/ez-zram stop
+
+[Install]
+WantedBy=multi-user.target
