@@ -133,9 +133,10 @@ def start():
 	reset_devices()
 	num_devices_needed = Config.cpu_cores() - len(Zram.active_devices())
 	hot_devices = []
+	pre_hot_active_devices = Zram.active_devices()
 	for _ in range(num_devices_needed):
 		hot_devices.append(Zram.add_device())
-	for i in Zram.active_devices() + hot_devices:
+	for i in pre_hot_active_devices + hot_devices:
 		Zram.setup_device(i, Config.algorithm(), Config.zram_size()//Config.cpu_cores(), Config.cpu_cores())
 		mkswap(f"/dev/zram{i}")
 		swapon(f"/dev/zram{i}")
