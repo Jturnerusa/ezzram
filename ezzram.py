@@ -87,7 +87,8 @@ class Zram:
 		with open("/sys/class/zram/hot_remove", "w") as sysfs:
 			sysfs.write(i)
 			sysfs.flush()
-			
+	
+	@staticmethod	
 	def reset_device(i):
 		with open(f"/sys/block/zram{i}", "w") as sysfs:
 			sysfs.write("1")
@@ -102,12 +103,6 @@ class Zram:
 			sysfs.flush()
 		with open(f"/sys/block/zram{i}/max_comp_streams", "w") as sysfs:
 			sysfs.write(f"{streams}")
-			sysfs.flush()
-			
-	@staticmethod
-	def reset_device(i):
-		with open(f"/sys/block/zram{i}/reset", "w") as sysfs:
-			sysfs.write("1")
 			sysfs.flush()
 			
 			
