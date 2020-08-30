@@ -24,7 +24,7 @@ class Config:
 
 	@staticmethod
 	def load():
-		with open("zram.conf") as conf:
+		with open("/etc/ezzram.conf") as conf:
 			config_data = conf.read()
 		pattern = "([a-z]+).+="
 		keys = re.findall(pattern, config_data)
@@ -129,6 +129,7 @@ def swapoff(device):
 	subprocess.run(f"swapoff {device}".split(), check=True)
 	
 def start():
+	Config.load()
 	if not Zram.module_loaded(): 
 		Zram.load_module()
 	reset_devices()
