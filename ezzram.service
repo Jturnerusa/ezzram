@@ -1,4 +1,5 @@
 [Service]
+RemainAfterExit=true
 ExecStart=/usr/bin/ezzram start
 ExecStop=/usr/bin/ezzram stop
 

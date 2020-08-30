@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 
 import sys, subprocess, re, pathlib
 from psutil import virtual_memory, cpu_count
@@ -120,13 +120,16 @@ def reset_devices():
 		Zram.reset_device(i)
 		
 def mkswap(device):
-	subprocess.run(f"mkswap {device}".split(), check=True)
+	subprocess.run(f"mkswap {device}".split(), capture_output=True, check=True)
+	print(f"mkswap for {device}")
 
 def swapon(device):
-	subprocess.run(f"swapon {device}".split(), check=True)
+	subprocess.run(f"swapon {device}".split(), capture_output=True, check=True)
+	print(f"swapon for {device}")
 	
 def swapoff(device):
-	subprocess.run(f"swapoff {device}".split(), check=True)
+	subprocess.run(f"swapoff {device}".split(), capture_output=True, check=True)
+	print(f"removed swap for {device}")
 	
 def start():
 	Config.load()
