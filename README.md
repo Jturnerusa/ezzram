@@ -1,7 +1,7 @@
 # ezzram
 Systemd compatible script for setting up zram swap devices 
 
-Download the [PKGBUILD](https://gist.github.com/Jturnerusa/24522c637bf9f71ad745354d4035e1ae)
+Download the [PKGBUILD](https://aur.archlinux.org/packages/ezzram/)
 
 Once the package is built and installed, make sure to edit /etc/ezzram.conf. To setup the zram devices run:
     
